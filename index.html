@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sorpresa 🌻?</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #fffbe6;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .ramo {
+      font-size: 6rem;
+      margin-bottom: 30px;
+    }
+    .ramo img {
+      width: 200px;   /* Tamaño del ramo */
+      border-radius: 15px; /* Bordes redondeados si quieres */
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombrita elegante */
+    }
+
+
+    button {
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background: #f9c74f;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .mensaje {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      font-size: 1.3rem;
+      line-height: 1.6;
+      transition: transform 0.5s ease;
+      max-width: 90%;
+    }
+
+    .mensaje.activo {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    /* Flores cayendo */
+    .flor {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      animation: caer 6s linear infinite;
+    }
+
+    @keyframes caer {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="ramo.png" alt="Ramo de flores" />
+</div>
+  <button onclick="mostrarMensaje()">VER SORPRESA</button>
+
+  <div id="mensaje" class="mensaje">
+    <p><b>Estas flores</b> representan alegría, energía, optimismo y renovación.</p>
+    <p><b>TE AMO</b></p>
+    <p> -- ATTE MICHELLE ❤️ -- </p>
+  </div>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").classList.add("activo");
+    }
+
+    // Generar flores cayendo
+    function crearFlor() {
+      const flor = document.createElement("div");
+      flor.classList.add("flor");
+      flor.textContent = "🌻";
+      flor.style.left = Math.random() * 100 + "vw";
+      flor.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(flor);
+
+      setTimeout(() => {
+        flor.remove();
+      }, 8000);
+    }
+
+    setInterval(crearFlor, 500);
+  </script>
+</body>
+</html>
